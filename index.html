@@ -34,33 +34,50 @@
             }
         }
     });
+
+
+    function toggleSemester(semester) {
+        document.getElementById('courses-113-1').style.display = semester === '113-1' ? 'block' : 'none';
+        document.getElementById('courses-113-2').style.display = semester === '113-2' ? 'block' : 'none';
+    }
+    function toggleMember(semester) {
+        document.getElementById('member-113-1').style.display = semester === '113-1' ? 'block' : 'none';
+        document.getElementById('member-113-2').style.display = semester === '113-2' ? 'block' : 'none';
+    }
 </script>
+
+
+    
 
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand navbar-logo" href="index.html"> <img src="images/logo.jpg" alt="logo" class="logo-1" width="45px" height="45px"><b>  中山網路程式設計研究社</b></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="fas fa-bars"></span> </button>
+            <a class="navbar-brand navbar-logo" href="index.html">
+                <img src="images/logo.jpg" alt="logo" class="logo-1" width="45px" height="45px">
+                <b> 中山網路程式設計研究社</b>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fas fa-bars"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"> <a class="nav-link" href="" data-scroll-nav="0">社團介紹</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="0">社團介紹</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="1">目的</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="2">課程資訊</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="3">本屆幹部</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="4">專案成果</a> </li>
                     <li class="nav-item"> <a class="nav-link" href="#" data-scroll-nav="5">參與心得</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="https://drive.google.com/drive/folders/19TJ6FcUP0KWnGTq5gHD3DIoViOylmVPU?usp=sharing" target="_blank">社團發展(會議記錄)</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://drive.google.com/drive/folders/19TJ6FcUP0KWnGTq5gHD3DIoViOylmVPU?usp=sharing" target="_blank">社團發展(會議記錄)</a>
+                    </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            開放教材
-          </a>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">開放教材</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="https://hackmd.io/@Renektonn/Hk1QoVpYA" target="_blank">113-1 C++教材</a></li>
                             <li><a class="dropdown-item" href="https://drive.google.com/drive/folders/1U0x6OjtvMZ3Gx1K4hxA88dM3415Vmod_?usp=drive_link" target="_blank">113-1 WEB教材</a></li>
-                            <!-- <li><a class="dropdown-item" href="https://github.com/whats2000/ReactCourseData?fbclid=IwAR3IGgxeIZYOCYrzauVmKU89nrf787N_t0N966Tcm49gl-7MySADfc7jMe0">112-2 React教材</a></li>
-                            <li><a class="dropdown-item" href="https://drive.google.com/drive/folders/1v6pxxBtOMJAU5mR4DtP7svKk-CXKTBgD?usp=drive_link">112-2 R語言教材</a></li> -->
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -71,77 +88,137 @@
                 </ul>
             </div>
         </div>
+    
+        <!-- 👇內嵌 CSS：修正 RWD、hover 效果、展開動畫 -->
+        <style>
+            /* navbar container 改善空間擠壓 */
+            .navbar>.container {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-between;
+            }
+    
+            /* 基本 nav 字型與間距 */
+            .navbar .nav-item a {
+                color: #fff;
+                font-size: 13px;
+                font-weight: 600;
+                padding: 8px 12px;
+                transition: all 0.3s ease;
+            }
+    
+            .navbar .nav-item a:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+                border-radius: 8px;
+                color: #01295c;
+            }
+    
+            /* RWD: 991px 以下變成 dropdown 垂直 */
+            @media (max-width: 991px) {
+                .navbar .navbar-collapse {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    background-color: #7a95bb;
+                    padding: 15px;
+                    animation: slideDown 0.3s ease-out;
+                }
+    
+                .navbar .navbar-nav {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                }
+    
+                .navbar .nav-item {
+                    width: 100%;
+                    margin: 5px 0;
+                }
+    
+                .navbar .nav-item a {
+                    font-size: 14px;
+                    padding: 10px;
+                    white-space: normal;
+                    width: 100%;
+                    display: block;
+                }
+            }
+    
+            /* 動畫效果 */
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        </style>
     </nav>
-    <!-------Banner End------->
 
-    <!-------News Start------->
-    <section class="video section-padding prelative">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="sectioner-header text-center">
-                        <h3>最新消息</h3>
-                        <span class="line"></span>
-                        <p>113-1網研 開課囉~!</p>
-                        <p>本學期由呂晉豪同學與游雅淇同學分別開設C++與WEB程式設計課程~</p>
-                    </div>
-                    <div class="section-content text-center">
-                        <div id="hackathonCarousel" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#hackathonCarousel" data-slide-to="0" class="active"></li>
-                                <li data-target="#hackathonCarousel" data-slide-to="1"></li>
-                                <li data-target="#hackathonCarousel" data-slide-to="2"></li>
-                                <li data-target="#hackathonCarousel" data-slide-to="3"></li>
-                                <!-- <li data-target="#hackathonCarousel" data-slide-to="4"></li>
-                                <li data-target="#hackathonCarousel" data-slide-to="5"></li>
-                                <li data-target="#hackathonCarousel" data-slide-to="6"></li>
-                                <li data-target="#hackathonCarousel" data-slide-to="7"></li>
-                                <li data-target="#hackathonCarousel" data-slide-to="8"></li> -->
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="d-block" src="images/S__295215117.jpg" alt="Slide 1">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block" src="images/S__64356371_0.jpg" alt="Slide 2">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block" src="images/S__295215115_0.jpg" alt="Slide 3">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block" src="images/S__295215112_0.jpg" alt="Slide 4">
-                                </div>
-                                <!-- <div class="carousel-item">
-                                    <img class="d-block" src="images/112-2 (5).jpg" alt="Slide 5">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block" src="images/112-2 (6).jpg" alt="Slide 6">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block" src="images/112-2 (7).jpg" alt="Slide 7">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block" src="images/112-2 (1).jpg" alt="Slide 8">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block" src="images/112-2 (2).jpg" alt="Slide 9">
-                                </div> -->
+<!-------News Start------->
+<section class="video section-padding prelative">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <!-- 區塊標題與簡介文字 -->
+                <div class="sectioner-header text-center">
+                    <h3 style="margin-top: 50px;">最新消息</h3>
+                    <span class="line"></span>
+                    <p>113-2 網研社開課囉！</p>
+                    <p>本學期由方敬堂同學與李景臣同學分別開設 Python 資料分析與 Python 網路爬蟲課程</p>
+                </div>
+
+                <!-- 輪播圖區塊 -->
+                <div class="section-content text-center">
+                    <div id="hackathonCarousel" class="carousel slide" data-ride="carousel">
+
+                        <!-- 輪播指示點（底下小圓點） -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#hackathonCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#hackathonCarousel" data-slide-to="1"></li>
+                            <li data-target="#hackathonCarousel" data-slide-to="2"></li>
+                            <li data-target="#hackathonCarousel" data-slide-to="3"></li>
+                        </ol>
+
+                        <!-- 輪播圖片內容 -->
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block" src="images/13th/1132_C.jpg" alt="Slide 1">
                             </div>
-                            <a class="carousel-control-prev" href="#hackathonCarousel" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#hackathonCarousel" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
+                            <div class="carousel-item">
+                                <img class="d-block" src="images/S__64356371_0.jpg" alt="Slide 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block" src="images/S__295215115_0.jpg" alt="Slide 3">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block" src="images/S__295215112_0.jpg" alt="Slide 4">
+                            </div>
                         </div>
+
+                        <!-- 左右切換箭頭 -->
+                        <a class="carousel-control-prev" href="#hackathonCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#hackathonCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+
                     </div>
                 </div>
+
             </div>
         </div>
-    </section>
-    <!-------News End------->
+    </div>
+</section>
+<!-------News End------->
+
     <section class="video section-padding prelative">
         <div class="container">
             <div class="row">
@@ -151,15 +228,26 @@
                         <span class="line"></span>
                         <p>這學期開始由羅珮綺教授擔任網研社的指導教授，羅教授提到作為網研社的第一屆成員，看到網研社還存在感到開心，希望網研社繼續傳承下去!</p>
                     </div>
-                    <div style="text-align: center;">
-                        <img class="d-block w-50" src="images/S__64356363_0.jpg" style="margin: auto;">
+                    <div class="row justify-content-center">
+                        <!-- 左圖：113-1 教授致詞 -->
+                        <div class="col-md-5 text-center">
+                            <img src="images/S__64356363_0.jpg" class="img-fluid rounded" style="max-width: 100%;">
+                            <p style="margin-top: 10px;">113-1 學期 期初社課｜羅珮綺教授致詞</p>
+                        </div>
+                    
+                        <!-- 右圖：113-2 教授致詞 -->
+                        <div class="col-md-5 text-center">
+                            <img src="images/13th/prof1132.jpg" class="img-fluid rounded" style="max-width: 100%;">
+                            <p style="margin-top: 10px;">113-2 學期 期初社課｜羅珮綺教授致詞</p>
+                        </div>
                     </div>
 
                 </div>
             </div>
         </div>
     </section>
-    <!-------About End------->
+    <!-------Prof End------->
+
     <section class="about section-padding prelative" data-scroll-index='1' id="1">
         <div class="container">
             <div class="row">
@@ -205,26 +293,39 @@
     <!-------About End------->
 
     <!-------課程資訊 Start------->
-    <section class="feature section-padding" data-scroll-index='2' id="2">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="sectioner-header text-center">
-                        <h3>課程資訊</h3>
-                        <span class="line"></span>
-                        <p>本學期開設課程</p>
-                    </div>
+<section class="feature section-padding" data-scroll-index='2' id="2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <!-- 區塊標題 -->
+                <div class="sectioner-header text-center">
+                    <h3>課程資訊</h3>
+                    <span class="line"></span>
+                    <p>點選下方按鈕，切換不同學期的課程資訊</p>
+                </div>
+
+                <!-- 切換按鈕 -->
+                <div class="title-link">
+                    <a href="javascript:void(0)" onclick="toggleSemester('113-1')">113-1</a>
+                    <a href="javascript:void(0)" onclick="toggleSemester('113-2')">113-2</a>
+                </div>
+
+                <!-- 113-1 課程 -->
+                <div class="semester-content" id="courses-113-1">
                     <!-- C++ -->
                     <div class="section-content text-center">
                         <div class="row">
                             <a href="class.html?class=1" class="about-btn">
-                                <div class="logo"> <img src="images/13th/C.png" class="img-fluid wow fadeInUp" /> </div>
+                                <div class="logo">
+                                    <img src="images/13th/C.png" class="img-fluid wow fadeInUp" />
+                                </div>
                                 <div class="media single-feature wow fadeInUp" data-wow-delay="0.2s">
                                     <div class="media-body text-left">
                                         <h5>開課時間: 9/23(一)</h5>
                                         <p>呂晉豪講師 | 每周一 19:00-21:00 CM1019</p>
                                         <h5>課程介紹</h5>
-                                        <p>本課程希望讓學生掌握C++程式設計基礎，並進一步挑戰程式競賽或檢定。無論你是程式設計初學者，或是你想深入了解程式設計，本課程將幫助你打下堅實的基礎。課程將涵蓋C++語言的核心概念，包括變數、資料型態、for迴圈、陣列、函式、指標等，同時引導同學進行實作練習，提升解決問題的能力。這些概念在資管的必修中經常出現，不管是一上的計算機概論，一下的程式設計，亦或是二上的資料結構都會用到這些概念，歡迎同學們一起來學習！</p>
+                                        <p>本課程希望讓學生掌握C++程式設計基礎，並進一步挑戰程式競賽或檢定。課程涵蓋核心概念如變數、陣列、指標等，並透過實作提升解決問題的能力，奠定日後資料結構與演算法課程的基礎。</p>
                                     </div>
                                 </div>
                             </a>
@@ -234,91 +335,163 @@
                     <div class="section-content text-center">
                         <div class="row">
                             <a href="class.html?class=2" class="about-btn">
-                                <div class="logo"> <img src="images/13th/web.png" class="img-fluid wow fadeInUp" /> </div>
+                                <div class="logo">
+                                    <img src="images/13th/web.png" class="img-fluid wow fadeInUp" />
+                                </div>
                                 <div class="media single-feature wow fadeInUp" data-wow-delay="0.2s">
                                     <div class="media-body text-left">
                                         <h5>開課時間: 9/24(二)</h5>
                                         <p>游雅淇講師 | 每周三 19:00-21:00 CM1019</p>
                                         <h5>課程介紹</h5>
-                                        <p>你是否對網頁開發充滿熱情？想要掌握前端和後端技術？這門課程將帶你從基礎開始，逐步深入，讓你能夠獨立完成一個完整的Web應用！ 本課程將涵蓋Web開發的核心技術，從CSS基礎到Vue.js前端框架，並深入Flask後端開發及MongoDB數據庫，最終將有專題實作。通過實踐，無論你是初學者還是有一定基礎的開發者，這裡都將幫助你提升技能，成為Web開發的專家！ 準備好踏上這段學習之旅了嗎？讓我們一起探索Web開發的精彩世界！
-                                        </p>
+                                        <p>從CSS、Vue.js前端框架，到Flask與MongoDB，帶你打造完整Web應用！適合初學者與進階者，強化實作力與系統架構理解。</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 113-2 課程 -->
+                <div class="semester-content" id="courses-113-2" style="display: none;">
+                    <!-- Python資料分析 -->
+                    <div class="section-content text-center">
+                        <div class="row">
+                            <a href="https://forms.gle/VxYvbLtrtWMimEyG6" class="about-btn" target="_blank">
+                                <div class="logo">
+                                    <img src="images/13th/py1.webp" class="img-fluid wow fadeInUp" />
+                                </div>
+                                <div class="media single-feature wow fadeInUp" data-wow-delay="0.2s">
+                                    <div class="media-body text-left">
+                                        <h5>開課時間: 3/4(二)</h5>
+                                        <p>方敬堂講師 | 每周二 19:00-21:00 CM1019</p>
+                                        <h5>課程介紹</h5>
+                                        <p>本課程從零開始，透過Python實作讓學生了解資料處理、數據分析、AI與機器學習。想變身資料分析大師？還想聽資管哥戀愛失敗故事？通通在這裡！劇情純屬虛構，資料實戰貨真價實。</p>
                                     </div>
                                 </div>
                             </a>
                         </div>
                     </div>
 
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-------課程資訊 End------->
-
-    <!-------Team Start------->
-    <section class="team section-padding" data-scroll-index='3' id="3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="sectioner-header text-center">
-                        <h3>本屆社員</h3>
-                        <span class="line"></span>
-                        <p>第十三屆幹部名單</p>
-                    </div>
+                    <!-- Python爬蟲 -->
                     <div class="section-content text-center">
                         <div class="row">
-                            <div class="col-md-3">
-                                <div class="team-detail wow bounce" data-wow-delay="0.2s"><img src="images/13th/cm1.jpg" class="img-fluid" />
-                                    <h4>社長</h4>
-                                    <p>蔡尚宸</p>
+                            <a href="https://forms.gle/VxYvbLtrtWMimEyG6" class="about-btn" target="_blank">
+                                <div class="logo">
+                                    <img src="images/13th/py2.png" class="img-fluid wow fadeInUp" />
                                 </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="team-detail wow bounce" data-wow-delay="0.4s"> <img src="images/13th/cm2.jpg" class="img-fluid" />
-                                    <h4>副社長</h4>
-                                    <p>黃云沛</p>
+                                <div class="media single-feature wow fadeInUp" data-wow-delay="0.2s">
+                                    <div class="media-body text-left">
+                                        <h5>開課時間: 3/5(三)</h5>
+                                        <p>李景臣講師 | 每周三 19:00-21:00 CM1019</p>
+                                        <h5>課程介紹</h5>
+                                        <p>從網頁探索、爬蟲工具(Selenium、Scrapy)、到資料處理與物件導向設計一條龍。你是否也想對網頁背後的世界一探究竟？這門課正好適合你！</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="team-detail wow bounce" data-wow-delay="0.6s"> <img src="images/13th/cm3.jpg" class="img-fluid" />
-                                    <h4>課程長</h4>
-                                    <p>李怡君</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="team-detail wow bounce" data-wow-delay="0.8s"> <img src="images/13th/cm4.jpg" class="img-fluid" />
-                                    <h4>課程長</h4>
-                                    <p>張筑綸</p>
-                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- JS：學期切換功能 -->
+    <script>
+        function toggleSemester(semester) {
+            document.getElementById('courses-113-1').style.display = semester === '113-1' ? 'block' : 'none';
+            document.getElementById('courses-113-2').style.display = semester === '113-2' ? 'block' : 'none';
+        }
+    </script>
+</section>
+<!-------課程資訊 End------->
+
+
+  <!-------Team Start------->
+<section class="team section-padding" data-scroll-index='3' id="3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <!-- 標題 -->
+                <div class="sectioner-header text-center">
+                    <h3>本屆社員</h3>
+                    <span class="line"></span>
+                    <p>第十三屆幹部名單</p>
+                </div>
+
+                <!-- 幹部不分學期 -->
+                <div class="section-content text-center">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="team-detail wow bounce" data-wow-delay="0.2s">
+                                <img src="images/13th/cm1.jpg" class="img-fluid" />
+                                <h4>社長</h4>
+                                <p>蔡尚宸</p>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="team-detail wow bounce" data-wow-delay="0.2s"> <img src="images/13th/cm5.jpg" class="img-fluid" />
-                                    <h4>資訊長</h4>
-                                    <p>楊雅安</p>
-                                </div>
+                        <div class="col-md-3">
+                            <div class="team-detail wow bounce" data-wow-delay="0.4s">
+                                <img src="images/13th/cm2.jpg" class="img-fluid" />
+                                <h4>副社長</h4>
+                                <p>黃云沛</p>
                             </div>
-                            <div class="col-md-3">
-                                <div class="team-detail wow bounce" data-wow-delay="0.4s"> <img src="images/13th/cm6.jpg" class="img-fluid" />
-                                    <h4>資訊長</h4>
-                                    <p>賴昱璇</p>
-                                </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="team-detail wow bounce" data-wow-delay="0.6s">
+                                <img src="images/13th/cm3.jpg" class="img-fluid" />
+                                <h4>課程長</h4>
+                                <p>李怡君</p>
                             </div>
-                            <div class="col-md-3">
-                                <div class="team-detail wow bounce" data-wow-delay="0.6s"> <img src="images/13th/cm7.jpg" class="img-fluid" />
-                                    <h4>活動長</h4>
-                                    <p>錢怡瑄</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="team-detail wow bounce" data-wow-delay="0.8s"> <img src="images/13th/cm8.jpg" class="img-fluid" />
-                                    <h4>財務長</h4>
-                                    <p>黃榆喬</p>
-                                </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="team-detail wow bounce" data-wow-delay="0.8s">
+                                <img src="images/13th/cm4.jpg" class="img-fluid" />
+                                <h4>課程長</h4>
+                                <p>張筑綸</p>
                             </div>
                         </div>
                     </div>
-                    <!-- 社員 -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="team-detail wow bounce" data-wow-delay="0.2s">
+                                <img src="images/13th/cm5.jpg" class="img-fluid" />
+                                <h4>資訊長</h4>
+                                <p>楊雅安</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="team-detail wow bounce" data-wow-delay="0.4s">
+                                <img src="images/13th/cm6.jpg" class="img-fluid" />
+                                <h4>資訊長</h4>
+                                <p>賴昱璇</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="team-detail wow bounce" data-wow-delay="0.6s">
+                                <img src="images/13th/cm7.jpg" class="img-fluid" />
+                                <h4>活動長</h4>
+                                <p>錢怡瑄</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="team-detail wow bounce" data-wow-delay="0.8s">
+                                <img src="images/13th/cm8.jpg" class="img-fluid" />
+                                <h4>財務長</h4>
+                                <p>黃榆喬</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 切換按鈕 -->
+                <div class="title-link">
+                    <a href="javascript:void(0)" onclick="toggleMember('113-1')">113-1社課報名名單</a>
+                    <a href="javascript:void(0)" onclick="toggleMember('113-2')">113-2社課報名名單</a>
+                </div>
+             
+                <!-- 113-1 成員名單 -->
+                <div id="member-113-1">
                     <div class="wrap">
                         <table id="member">
                             <thead>
@@ -330,165 +503,102 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>徐恩澤</td>
-                                    <td>資管117</td>
-                                    <td>C++程式設計, Web網頁設計</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>羅榆翔</td>
-                                    <td>資管115</td>
-                                    <td>C++程式設計</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>張微咏</td>
-                                    <td>資管117</td>
-                                    <td>Web網頁設計</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>廖禾丰</td>
-                                    <td>資管117</td>
-                                    <td>Web網頁設計</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>謝承祐</td>
-                                    <td>資管117</td>
-                                    <td>C++程式設計, Web網頁設計</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>趙子珺</td>
-                                    <td>資管117</td>
-                                    <td>C++程式設計, Web網頁設計</td>
-                                </tr>
-                                <tr>
-                                    <td>7</td>
-                                    <td>劉育安</td>
-                                    <td>資管117</td>
-                                    <td>C++程式設計</td>
-                                </tr>
-                                <tr>
-                                    <td>8</td>
-                                    <td>謝昀嬡</td>
-                                    <td>資管116</td>
-                                    <td>C++程式設計, Web網頁設計</td>
-                                </tr>
-                                <tr>
-                                    <td>9</td>
-                                    <td>郭家綺</td>
-                                    <td>資管117</td>
-                                    <td>C++程式設計, Web網頁設計</td>
-                                </tr>
-                                <tr>
-                                    <td>10</td>
-                                    <td>傅柏皓</td>
-                                    <td>物理116</td>
-                                    <td>Web網頁設計</td>
-                                </tr>
-                                <tr>
-                                    <td>11</td>
-                                    <td>徐緯君</td>
-                                    <td>資管116</td>
-                                    <td>Web網頁設計</td>
-                                </tr>
-                                <tr>
-                                    <td>12</td>
-                                    <td>王信淳</td>
-                                    <td>資管117</td>
-                                    <td>C++程式設計, Web網頁設計</td>
-                                </tr>
-                                <tr>
-                                    <td>13</td>
-                                    <td>葉冠廷</td>
-                                    <td>資管117</td>
-                                    <td>Web網頁設計</td>
-                                </tr>
-                                <tr>
-                                    <td>14</td>
-                                    <td>阮子珊</td>
-                                    <td>資管117</td>
-                                    <td>C++程式設計, Web網頁設計</td>
-                                </tr>
-                                <tr>
-                                    <td>15</td>
-                                    <td>陳粢渝</td>
-                                    <td>資管117</td>
-                                    <td>C++程式設計, Web網頁設計</td>
-                                </tr>
-                                <tr>
-                                    <td>16</td>
-                                    <td>王研安</td>
-                                    <td>資管117</td>
-                                    <td>C++程式設計</td>
-                                </tr>
-                                <tr>
-                                    <td>17</td>
-                                    <td>李秉宸</td>
-                                    <td>資管117</td>
-                                    <td>C++程式設計, Web網頁設計</td>
-                                </tr>
-                                <tr>
-                                    <td>18</td>
-                                    <td>羅婕瑜</td>
-                                    <td>資管116</td>
-                                    <td>Web網頁設計</td>
-                                </tr>
-                                <tr>
-                                    <td>19</td>
-                                    <td>盧安琪</td>
-                                    <td>資管116</td>
-                                    <td>Web網頁設計</td>
-                                </tr>
-                                <tr>
-                                    <td>20</td>
-                                    <td>劉信宏</td>
-                                    <td>電機116</td>
-                                    <td>C++程式設計</td>
-                                </tr>
-                                <tr>
-                                    <td>21</td>
-                                    <td>邱瑀婕</td>
-                                    <td>材光系</td>
-                                    <td>C++程式設計</td>
-                                </tr>
-                                <tr>
-                                    <td>22</td>
-                                    <td>翁圓舒</td>
-                                    <td>資管117</td>
-                                    <td>C++程式設計, Web網頁設計</td>
-                                </tr>
-                                <tr>
-                                    <td>23</td>
-                                    <td>張桔睿</td>
-                                    <td>生醫117</td>
-                                    <td>Web網頁設計</td>
-                                </tr>
-                                <tr>
-                                    <td>24</td>
-                                    <td>上官語恬</td>
-                                    <td>資管117</td>
-                                    <td>C++程式設計</td>
-                                </tr>
-                                <tr>
-                                    <td>25</td>
-                                    <td>查欣瑜</td>
-                                    <td>資管116</td>
-                                    <td>Web網頁設計</td>
-                                </tr>
+                                <tr><td>1</td><td>徐恩澤</td><td>資管117</td><td>C++程式設計, Web網頁設計</td></tr>
+                                <tr><td>2</td><td>羅榆翔</td><td>資管115</td><td>C++程式設計</td></tr>
+                                <tr><td>3</td><td>張微咏</td><td>資管117</td><td>Web網頁設計</td></tr>
+                                <tr><td>4</td><td>廖禾丰</td><td>資管117</td><td>Web網頁設計</td></tr>
+                                <tr><td>5</td><td>謝承祐</td><td>資管117</td><td>C++程式設計, Web網頁設計</td></tr>
+                                <tr><td>6</td><td>趙子珺</td><td>資管117</td><td>C++程式設計, Web網頁設計</td></tr>
+                                <tr><td>7</td><td>劉育安</td><td>資管117</td><td>C++程式設計</td></tr>
+                                <tr><td>8</td><td>謝昀嬡</td><td>資管116</td><td>C++程式設計, Web網頁設計</td></tr>
+                                <tr><td>9</td><td>郭家綺</td><td>資管117</td><td>C++程式設計, Web網頁設計</td></tr>
+                                <tr><td>10</td><td>傅柏皓</td><td>物理116</td><td>Web網頁設計</td></tr>
+                                <tr><td>11</td><td>徐緯君</td><td>資管116</td><td>Web網頁設計</td></tr>
+                                <tr><td>12</td><td>王信淳</td><td>資管117</td><td>C++程式設計, Web網頁設計</td></tr>
+                                <tr><td>13</td><td>葉冠廷</td><td>資管117</td><td>Web網頁設計</td></tr>
+                                <tr><td>14</td><td>阮子珊</td><td>資管117</td><td>C++程式設計, Web網頁設計</td></tr>
+                                <tr><td>15</td><td>陳粢渝</td><td>資管117</td><td>C++程式設計, Web網頁設計</td></tr>
+                                <tr><td>16</td><td>王研安</td><td>資管117</td><td>C++程式設計</td></tr>
+                                <tr><td>17</td><td>李秉宸</td><td>資管117</td><td>C++程式設計, Web網頁設計</td></tr>
+                                <tr><td>18</td><td>羅婕瑜</td><td>資管116</td><td>Web網頁設計</td></tr>
+                                <tr><td>19</td><td>盧安琪</td><td>資管116</td><td>Web網頁設計</td></tr>
+                                <tr><td>20</td><td>劉信宏</td><td>電機116</td><td>C++程式設計</td></tr>
+                                <tr><td>21</td><td>邱瑀婕</td><td>材光系</td><td>C++程式設計</td></tr>
+                                <tr><td>22</td><td>翁圓舒</td><td>資管117</td><td>C++程式設計, Web網頁設計</td></tr>
+                                <tr><td>23</td><td>張桔睿</td><td>生醫117</td><td>Web網頁設計</td></tr>
+                                <tr><td>24</td><td>上官語恬</td><td>資管117</td><td>C++程式設計</td></tr>
+                                <tr><td>25</td><td>查欣瑜</td><td>資管116</td><td>Web網頁設計</td></tr>
                             </tbody>
                         </table>
                     </div>
-
                 </div>
+
+                <!-- 113-2 成員名單 -->
+                <div id="member-113-2" style="display: none;">
+                    <div class="wrap">
+                        
+                        <table id="member">
+                            <thead>
+                                <tr>
+                                    <th>編號</th>
+                                    <th>姓名</th>
+                                    <th>系級</th>
+                                    <th>報名課程</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- 以下由你提供資料自動產出 -->
+                                <tr><td>1</td><td>劉彥民</td><td>行傳114</td><td>Python網路爬蟲</td></tr>
+                                <tr><td>2</td><td>劉秀惠</td><td>人科115</td><td>Python網路爬蟲</td></tr>
+                                <tr><td>3</td><td>莊恩彤</td><td>資管117</td><td>Python網路爬蟲</td></tr>
+                                <tr><td>4</td><td>趙子珺</td><td>資管117</td><td>Python網路爬蟲</td></tr>
+                                <tr><td>5</td><td>廖子婷</td><td>物理113</td><td>Python資料分析工作坊, Python網路爬蟲</td></tr>
+                                <tr><td>6</td><td>曾冠堯</td><td>企管116</td><td>Python資料分析工作坊, Python網路爬蟲</td></tr>
+                                <tr><td>7</td><td>簡昱安</td><td>116</td><td>Python網路爬蟲</td></tr>
+                                <tr><td>8</td><td>劉育安</td><td>資管117</td><td>Python資料分析工作坊, Python網路爬蟲</td></tr>
+                                <tr><td>9</td><td>林瀚坪</td><td>機電114</td><td>Python資料分析工作坊</td></tr>
+                                <tr><td>10</td><td>陳粢渝</td><td>資管117</td><td>Python資料分析工作坊, Python網路爬蟲</td></tr>
+                                <tr><td>11</td><td>羅婕瑜</td><td>資管116</td><td>Python網路爬蟲</td></tr>
+                                <tr><td>12</td><td>阮子珊</td><td>117</td><td>Python網路爬蟲</td></tr>
+                                <tr><td>13</td><td>黃至維</td><td>外文115</td><td>Python資料分析工作坊</td></tr>
+                                <tr><td>14</td><td>蕭雅心</td><td>資管117</td><td>Python資料分析工作坊</td></tr>
+                                <tr><td>15</td><td>田安妤</td><td>資管117</td><td>Python資料分析工作坊</td></tr>
+                                <tr><td>16</td><td>林詩穎</td><td>資管117</td><td>Python資料分析工作坊, Python網路爬蟲</td></tr>
+                                <tr><td>17</td><td>張沁邦</td><td>資管117</td><td>Python網路爬蟲</td></tr>
+                                <tr><td>18</td><td>徐恩澤</td><td>資管117</td><td>Python資料分析工作坊, Python網路爬蟲</td></tr>
+                                <tr><td>19</td><td>王研安</td><td>資管117</td><td>Python資料分析工作坊, Python網路爬蟲</td></tr>
+                                <tr><td>20</td><td>魏璋珣</td><td>資管117</td><td>Python資料分析工作坊, Python網路爬蟲</td></tr>
+                                <tr><td>21</td><td>翁圓舒</td><td>資管117</td><td>Python網路爬蟲</td></tr>
+                                <tr><td>22</td><td>陳佳晨</td><td>資管117</td><td>Python資料分析工作坊, Python網路爬蟲</td></tr>
+                                <tr><td>23</td><td>王重鈞</td><td>企管116</td><td>Python資料分析工作坊</td></tr>
+                                <tr><td>24</td><td>吳岱庭</td><td>資管117</td><td>Python資料分析工作坊</td></tr>
+                                <tr><td>25</td><td>朱緯承</td><td>外文115</td><td>Python網路爬蟲</td></tr>
+                                <tr><td>26</td><td>朱璽</td><td>海工114</td><td>Python資料分析工作坊, Python網路爬蟲</td></tr>
+                                <tr><td>27</td><td>楊芳瑀</td><td>經濟所113</td><td>Python資料分析工作坊, Python網路爬蟲</td></tr>
+                                <tr><td>28</td><td>廖禾丰</td><td>117</td><td>Python網路爬蟲</td></tr>
+                                <tr><td>29</td><td>上官語恬</td><td>資管117</td><td>Python資料分析工作坊</td></tr>
+                                <tr><td>30</td><td>張軒豪</td><td>電機116</td><td>Python網路爬蟲</td></tr>
+                                <tr><td>31</td><td>游馥亘</td><td>117資管</td><td>Python資料分析工作坊</td></tr>
+                                <tr><td>32</td><td>汪禹廉</td><td>社會114</td><td>Python資料分析工作坊, Python網路爬蟲</td></tr>
+                                <tr><td>33</td><td>楊佳諺</td><td>光電117</td><td>Python資料分析工作坊</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </section>
-    <!-------Team End------->
+    </div>
+
+    <!-- JS：學期成員切換功能 -->
+    <script>
+        function toggleMember(semester) {
+            document.getElementById('member-113-1').style.display = semester === '113-1' ? 'block' : 'none';
+            document.getElementById('member-113-2').style.display = semester === '113-2' ? 'block' : 'none';
+        }
+    </script>
+</section>
+<!-------Team End------->
 
     <!-- 專案成果start -->
     <!-- <section class="testimonial section-padding" data-scroll-index='4'>
@@ -714,6 +824,12 @@
                     <div class="section-content">
                         <div class="row">
                             <div class="col-md-6 faq-content wow fadeInUp" data-wow-delay="0.2s">
+                                <h4>蔡尚宸</h4>
+                                <p>作為網研社社長，我有幸參與並主導本屆課程的整體規劃與安排。在每次排課與講師溝通的過程中，我都能感受到講師們的熱忱與用心，也因此更加期待課程真正呈現在社員面前的樣貌。每當看到剛接觸程式的學弟妹們，從一開始的生疏與緊張，到後來能獨立完成專題、寫出屬於自己的作品，這份成長與轉變，讓我感到特別感動。
+
+                                    我們希望社團課程不只是教語法，而是能陪伴每一位同學在學習中找回自信、在解題中感受到成就。從0開始的同學們，能在這裡循序漸進地熟悉程式語言，逐步累積能力，也逐步相信自己的可能性。我深信，只要給予足夠的資源與支持，每個人都可以寫出屬於自己的精彩故事。希望未來的網研社，能繼續成為這樣一個支持學習、鼓勵挑戰的平台，陪伴更多學生踏上程式設計這條路。</p>
+                            </div>
+                            <div class="col-md-6 faq-content wow fadeInUp" data-wow-delay="0.2s">
                                 <h4>黃云沛：</h4>
                                 <p>網研社每個學期都會開設不同的課程，每位講師都是資管系的學長姐，除了充實的上課內容外，也會分享許多經驗，每次上課都很充實又開心
                                     <br>
@@ -748,6 +864,12 @@
                                     <p>網研社讓我受益良多，特別是期末舉辦的黑客松活動，讓我可以複習過去所學的知識與技能。比起單純聽課，親自動手解題讓我對概念有更清晰的理解，也發現自己在邏輯思考與問題在活動分析上的不足。也可以跟同學和講師一起討論，大家不僅能更深入理解課程內容，還能嘗試解決更具挑戰性的題目。這次的挑戰讓我更加有信心面對未來的課程，也激發我想要持續學習的動力。
                                     </p>
                                     </div>
+
+                                    <div class="col-md-6 faq-content wow fadeInUp" data-wow-delay="0.2s">
+                                        <h4>錢怡瑄 ：</h4>
+                                        <p>黑客松這個活動讓大家能在一個輕鬆的氛圍下，運用自己在前幾堂課所學到的知識，完成講師所設計的題目。不僅會讓大家對這些內容有更深的了解，也可以透過這個機會練習，藉此得知自己尚未熟練的部分有哪些，往後也能朝這個方向去持續地精進。同學之間也能互相交流討論，而且講師也會在旁邊適時地提供幫助，不會有太大的壓力。表現優異的人還有機會獲得獎品，學習與收穫兼得，是一個非常有價值的經驗。
+                                        </p>
+                                        </div>
                         </div>
                     </div>
                 </div>
@@ -1007,3 +1129,69 @@
 </body>
 
 </html>
+
+<style>
+    .title-link a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        font-size: 20px;
+        padding: 5px 15px;
+        margin: 0 5px;
+        border: 2px solid #123962;
+        border-radius: 10px;
+        transition: all 0.3s;
+    }
+    .title-link a:hover {
+        background-color: #123962;
+        color: #fff;
+    }
+    </style>
+
+    <style>
+        /* 調整箭頭位置：離左右邊各留 30px 空間 */
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 50px;
+            height: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5); /* 加入深色半透明背景讓箭頭更明顯 */
+            border-radius: 50%;
+        }
+        
+        /* 左箭頭位置靠左一點 */
+        .carousel-control-prev {
+            left: 30px;
+        }
+        
+        /* 右箭頭位置靠右一點 */
+        .carousel-control-next {
+            right: 30px;
+        }
+        
+        /* 自訂箭頭圖示為白色 */
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-image: none; /* 移除 Bootstrap 原生箭頭 */
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* 使用 Unicode 自訂箭頭文字 */
+        .carousel-control-prev-icon::before,
+        .carousel-control-next-icon::before {
+            content: '‹'; /* 左箭頭 */
+            font-size: 30px;
+            color: white;
+        }
+        
+        .carousel-control-next-icon::before {
+            content: '›'; /* 右箭頭 */
+        }
+        </style>
+        
+    
